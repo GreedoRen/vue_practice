@@ -3,12 +3,13 @@
     <label>
       Введите email
 
-      <input type="email" v-bind:value="email" />
+      <input type="email" :value="email" v-on:input="emailInput" />
+      {{ email }}
     </label>
     <label>
       Введите password
 
-      <input type="password" v-bind:value="password" />
+      <input type="password" :value="password" />
     </label>
   </div>
 </template>
@@ -21,6 +22,12 @@ export default {
       email: "test@email.com",
       password: "testPassword",
     };
+  },
+
+  methods: {
+    emailInput(e) {
+      this.email = e.target.value;
+    },
   },
 };
 </script>
