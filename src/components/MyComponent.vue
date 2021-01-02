@@ -1,27 +1,10 @@
 <template>
   <div class="root">
-    <label>
-      Введите email
-
-      <input
-        type="email"
-        :value="email"
-        @input="emailInput($event.target.value)"
-      />
-      {{ email }}
+    <button @click="onDecrement">-</button>
+    <label for="number">
+      <input type="number" name="number" id="number" :value="counter" />
     </label>
-    <label>
-      Введите password
-
-      <input
-        type="password"
-        :value="password"
-        @input="passwordInput($event.target.value)"
-      />
-    </label>
-
-    {{ email }}
-    {{ password }}
+    <button @click="onIncrement">+</button>
   </div>
 </template>
 
@@ -30,17 +13,16 @@ export default {
   name: "MyComponent",
   data() {
     return {
-      email: "test@email.com",
-      password: "testPassword",
+      counter: 0,
     };
   },
 
   methods: {
-    emailInput(value) {
-      this.email = value;
+    onDecrement() {
+      this.counter--;
     },
-    passwordInput(value) {
-      this.password = value;
+    onIncrement() {
+      this.counter++;
     },
   },
 };
