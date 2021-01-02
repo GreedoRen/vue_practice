@@ -27,7 +27,7 @@ export default {
   },
   computed: {
     getAuthorsFullName() {
-      return `${this.firstName} ${this.secondName} ${this.lastName}`;
+      return `${this.firstName.toUpperCase()} ${this.secondName.toUpperCase()} ${this.lastName.toUpperCase()}`;
     },
   },
   methods: {},
