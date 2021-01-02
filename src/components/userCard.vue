@@ -10,8 +10,12 @@
         <li>#3</li>
       </ul>
     </div>
-    <span>Кол-во: 0</span>
-    <ul></ul>
+    <span>Кол-во: {{ users.length }}</span>
+    <ul>
+      <li v-for="(user, index) in users" :key="index">
+        {{ getIdAndName(user) }}
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -23,14 +27,25 @@ export default {
       firstName: "Ivan",
       secondName: "Ivanovich",
       lastName: "NotIvanov",
+
+      users: [
+        { id: "1", name: "Jhon" },
+        { id: "2", name: "Marie" },
+        { id: "3", name: "Roger" },
+      ],
     };
   },
   computed: {
     getAuthorsFullName() {
-      return `${this.firstName.toUpperCase()} ${this.secondName.toUpperCase()} ${this.lastName.toUpperCase()}`;
+      return `${this.firstName} ${this.secondName} ${this.lastName}`.toUpperCase();
     },
   },
-  methods: {},
+  methods: {
+    getIdAndName(user) {
+      return `ID: ${user.id};
+            Name: ${user.name};`;
+    },
+  },
 };
 </script>
 
