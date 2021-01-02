@@ -12,8 +12,8 @@
     </div>
     <span>Кол-во: {{ users.length }}</span>
     <ul>
-      <li v-for="(user, index) in users" :key="index">
-        {{ getIdAndName(user) }}
+      <li v-for="(value, key, index) in users[0]" :key="index">
+        {{ value }}
       </li>
     </ul>
   </div>
