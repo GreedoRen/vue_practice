@@ -3,14 +3,25 @@
     <label>
       Введите email
 
-      <input type="email" :value="email" v-on:input="emailInput" />
+      <input
+        type="email"
+        :value="email"
+        @input="emailInput($event.target.value)"
+      />
       {{ email }}
     </label>
     <label>
       Введите password
 
-      <input type="password" :value="password" />
+      <input
+        type="password"
+        :value="password"
+        @input="passwordInput($event.target.value)"
+      />
     </label>
+
+    {{ email }}
+    {{ password }}
   </div>
 </template>
 
@@ -25,8 +36,11 @@ export default {
   },
 
   methods: {
-    emailInput(e) {
-      this.email = e.target.value;
+    emailInput(value) {
+      this.email = value;
+    },
+    passwordInput(value) {
+      this.password = value;
     },
   },
 };
