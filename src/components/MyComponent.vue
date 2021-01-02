@@ -1,15 +1,10 @@
 <template>
   <div class="root">
-    <label>
-      Введите email
-
-      <input type="email" v-bind:value="email" />
+    <button @click="onDecrement">-</button>
+    <label for="number">
+      <input type="number" name="number" id="number" :value="counter" />
     </label>
-    <label>
-      Введите password
-
-      <input type="password" v-bind:value="password" />
-    </label>
+    <button @click="onIncrement">+</button>
   </div>
 </template>
 
@@ -18,9 +13,17 @@ export default {
   name: "MyComponent",
   data() {
     return {
-      email: "test@email.com",
-      password: "testPassword",
+      counter: 0,
     };
+  },
+
+  methods: {
+    onDecrement() {
+      this.counter--;
+    },
+    onIncrement() {
+      this.counter++;
+    },
   },
 };
 </script>
