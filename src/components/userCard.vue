@@ -31,6 +31,7 @@ export default {
       lastName: "NotIvanov",
     };
   },
+  computed: {},
   methods: {},
 };
 </script>
