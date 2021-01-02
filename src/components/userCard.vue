@@ -64,8 +64,10 @@ export default {
     },
   },
   watch: {
-      currentPage(newValue, oldValue)
-  }
+    currentPage(page) {
+      this.loadUser(page);
+    },
+  },
 };
 </script>
 
