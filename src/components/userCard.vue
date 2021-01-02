@@ -16,6 +16,18 @@
         {{ value }}
       </li>
     </ul>
+    <button type="button" @click="currentPage--">-</button>
+    <button
+      v-for="page in pages"
+      :key="page"
+      @click="currentPage = page"
+      type="button"
+    >
+      {{ page }}
+    </button>
+    <button type="button" @click="currentPage++">+</button>
+
+    <p>Страница {{ currentPage }} из {{ pages }}</p>
   </div>
 </template>
 
@@ -33,6 +45,8 @@ export default {
         { id: "2", name: "Marie" },
         { id: "3", name: "Roger" },
       ],
+      pages: 3,
+      currentPage: 1,
     };
   },
   computed: {
@@ -45,7 +59,13 @@ export default {
       return `ID: ${user.id};
             Name: ${user.name};`;
     },
+    loadUser(page) {
+      console.log(page);
+    },
   },
+  watch: {
+      currentPage(newValue, oldValue)
+  }
 };
 </script>
 
