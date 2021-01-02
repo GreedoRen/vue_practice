@@ -2,13 +2,7 @@
   <div class="root">
     <h1 class="h1">Заголовок</h1>
     <div class="info">
-      <h2 class="h2">
-        {{
-          firstName.toUppercase() +
-          secondName.toUppercase() +
-          lastName.toUppercase()
-        }}
-      </h2>
+      <h2 class="h2">{{ getAuthorsFullName }}</h2>
 
       <ul>
         <li>#1</li>
@@ -31,7 +25,11 @@ export default {
       lastName: "NotIvanov",
     };
   },
-  computed: {},
+  computed: {
+    getAuthorsFullName() {
+      return `${this.firstName} ${this.secondName} ${this.lastName}`;
+    },
+  },
   methods: {},
 };
 </script>
