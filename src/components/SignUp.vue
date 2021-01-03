@@ -5,7 +5,8 @@
       <input
         id="login"
         class="form-control"
-        v-model.trim="$v.form.login.$model"
+        v-model.trim="form.login"
+        :class="$v.form.login.$error ? 'is-invalid' : ''"
       />
     </div>
     <div class="form-group">
@@ -15,6 +16,7 @@
         type="email"
         class="form-control"
         v-model.trim="form.email"
+        :class="$v.form.email.$error ? 'is-invalid' : ''"
       />
     </div>
     <div class="form-group">
@@ -24,6 +26,7 @@
         type="password"
         class="form-control"
         v-model.trim="form.password"
+        :class="$v.form.password.$error ? 'is-invalid' : ''"
       />
     </div>
     <div class="form-group">
@@ -109,6 +112,7 @@
 
 <script>
 import { validationMixin } from "vuelidate";
+import { required, minLength, email } from "vuelidate/lib/validators";
 
 export default {
   mixins: [validationMixin],
@@ -164,12 +168,17 @@ export default {
   },
   validations: {
     form: {
-      login: {
-        simpleValidation(value) {
-          console.log(value);
-          return value.length > 5;
-        },
-      },
+      login: { required, minLength: minLength(5) },
+      email: { required, email },
+      password: { required, minLength: minLength(5) },
+    },
+  },
+  methods: {
+    checkForm() {
+      this.$v.form.$touch();
+      if (this.$v.form.$error) {
+        console.log("Error");
+      }
     },
   },
 };
@@ -184,5 +193,9 @@ export default {
 }
 button {
   margin-top: 15px;
+}
+
+.is-invalid {
+  border: 1px solid red;
 }
 </style>
