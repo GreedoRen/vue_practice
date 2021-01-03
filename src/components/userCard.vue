@@ -13,7 +13,7 @@
 <script>
 export default {
   name: "userCard",
-  props: ["title", "price", "imgUrl", "count"],
+  props: { title: String, price: Number, imgUrl: String, count: Number },
   computed: {},
   methods: {},
   watch: {},
