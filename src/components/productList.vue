@@ -1,7 +1,7 @@
 <template>
   <div class="product__list">
     <h1>Столы</h1>
-    <MyInput />
+    <MyInput v-model="searchText" />
     <ul>
       <li v-for="(product, index) in products" :key="index">
         <userCard

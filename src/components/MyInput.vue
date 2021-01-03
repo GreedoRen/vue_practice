@@ -1,7 +1,12 @@
 <template>
-  <div><input type="text" v-model="searchText" /></div>
+  <div><input type="text" @input="$emit('input', $event.target.value)" /></div>
 </template>
 
 <script>
-export default {};
+export default {
+  model: {
+    prop: "value",
+    event: "input",
+  },
+};
 </script>
