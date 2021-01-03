@@ -50,11 +50,11 @@
       <input
         type="checkbox"
         class="form-check-input"
-        id="notification"
+        id="notification1"
         v-model="agreeWithSendToMail"
         value="1"
       />
-      <label class="form-check-label" for="notification"
+      <label class="form-check-label" for="notification1"
         >Уведомлять меня о новых курсах 1</label
       >
     </div>
@@ -62,15 +62,15 @@
       <input
         type="checkbox"
         class="form-check-input"
-        id="notification"
+        id="notification2"
         v-model="agreeWithSendToMail"
         value="2"
       />
-      <label class="form-check-label" for="notification"
+      <label class="form-check-label" for="notification2"
         >Уведомлять меня о новых курсах 2</label
       >
     </div>
-    <!-- <div class="flex">
+    <div class="flex">
       <div class="form-check">
         <input
           class="form-check-input"
@@ -78,6 +78,7 @@
           value="male"
           name="exampleRadios"
           id="male"
+          v-model="gender"
         />
         <label class="form-check-label" for="male"> Мужчина </label>
       </div>
@@ -88,10 +89,11 @@
           value="female"
           name="exampleRadios"
           id="female"
+          v-model="gender"
         />
         <label class="form-check-label" for="female"> Женщина </label>
-      </div> -->
-    <!-- </div> -->
+      </div>
+    </div>
     <button type="submit" class="btn btn-primary">Сохранить</button>
   </form>
 </template>
@@ -103,6 +105,7 @@ export default {
       login: "",
       email: "",
       password: "",
+      gender: "",
       countries: [
         {
           label: "Россия",
