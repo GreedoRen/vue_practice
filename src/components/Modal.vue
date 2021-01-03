@@ -6,27 +6,25 @@
           <h5 class="modal-title">
             {{ title }}
           </h5>
-          <button
-            type="button"
-            class="close"
-            aria-label="Close"
-            @click="closeModal"
-          >
+          <button type="button" class="close" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body">
-          <slot name="default"></slot>
+        <div class="modal-body" ref="modalBody" @scroll="onBodyScroll">
+          <slot></slot>
         </div>
         <div class="modal-footer">
           <slot name="footer">
-            <button type="button" class="btn btn-secondary">Отмена</button>
+            <button type="button" class="btn" @click="closeModal">
+              Отмена
+            </button>
             <button
               type="button"
-              class="btn btn-primary"
-              :disabled="!isRulesReaded"
+              class="btn"
+              @click="closeModal"
+              :disabled="!isRuleReaded"
             >
-              Принять
+              Сохранить
             </button>
           </slot>
         </div>
@@ -43,10 +41,24 @@ export default {
       default: "",
     },
   },
-
+  data() {
+    return {
+      isRuleReaded: false,
+    };
+  },
   methods: {
-    closeModel() {
+    closeModal() {
       this.$emit("close");
+    },
+    onBodyScroll() {
+      const modalBody = this.$refs.modalBody;
+
+      if (
+        modalBody.clientHeight + modalBody.scrollTop >=
+        modalBody.scrollHeight
+      ) {
+        this.isRuleReaded = true;
+      }
     },
   },
 };
@@ -56,7 +68,7 @@ export default {
 .modal {
   display: block;
 }
-body .modal {
+.modal-body {
   height: 200px;
   overflow-y: scroll;
 }
