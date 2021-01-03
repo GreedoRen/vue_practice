@@ -176,8 +176,8 @@ export default {
   methods: {
     checkForm() {
       this.$v.form.$touch();
-      if (this.$v.form.$error) {
-        console.log("Error");
+      if (!this.$v.form.$error) {
+        console.log("Ok.");
       }
     },
   },
