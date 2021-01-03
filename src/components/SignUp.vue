@@ -47,12 +47,17 @@
       </select>
     </div>
     <div class="form-group form-check">
-      <input type="checkbox" class="form-check-input" id="notification" />
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="notification"
+        v-model="agreeWithSendToMail"
+      />
       <label class="form-check-label" for="notification"
         >Уведомлять меня о новых курсах</label
       >
     </div>
-    <div class="flex">
+    <!-- <div class="flex">
       <div class="form-check">
         <input
           class="form-check-input"
@@ -72,8 +77,8 @@
           id="female"
         />
         <label class="form-check-label" for="female"> Женщина </label>
-      </div>
-    </div>
+      </div> -->
+    <!-- </div> -->
     <button type="submit" class="btn btn-primary">Сохранить</button>
   </form>
 </template>
@@ -123,6 +128,7 @@ export default {
         },
       ],
       favoriteTheme: ["Technology"],
+      agreeWithSendToMail: false,
     };
   },
 };
