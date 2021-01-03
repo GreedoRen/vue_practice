@@ -1,6 +1,11 @@
 <template>
   <div class="product__list">
     <h1>Столы</h1>
+    <input
+      type="text"
+      :value="searchText"
+      @input="searchText = $event.target.value"
+    />
     <ul>
       <li v-for="(product, index) in products" :key="index">
         <userCard
@@ -8,6 +13,7 @@
           :price="product.price"
           :img-url="product.imgUrl"
           :count="product.count"
+          @addToBusket="addToBusket(index)"
         />
       </li>
     </ul>
@@ -22,6 +28,7 @@ export default {
   components: { userCard },
   data() {
     return {
+      searchText: "",
       products: [
         {
           title: "Стол Blah#1",
@@ -53,6 +60,11 @@ export default {
         },
       ],
     };
+  },
+  methods: {
+    addToBusket(index) {
+      console.log(index);
+    },
   },
 };
 </script>>
