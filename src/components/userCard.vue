@@ -1,75 +1,11 @@
 <template>
   <div class="root">
-    <div class="flex">
-      <div class="img wrapper">
-        <img
-          v-show="isCatVisible"
-          class="logo"
-          :class="imgFilters"
-          src="../assets/logo.png"
-          :style="imgStyles"
-          alt="logo"
-        />
-        <!-- <p v-else>Скрыто</p> -->
-      </div>
-      <div class="controls">
-        <h1>Заголовок</h1>
-        <div class="buttons">
-          <button
-            @click="isCatVisible = !isCatVisible"
-            :class="isCatVisible ? '' : 'active'"
-            type="button"
-          >
-            Показать/скрыть
-          </button>
-          <button
-            type="button"
-            :class="imgFilters.minimize ? 'active' : ''"
-            @click="imgFilters.minimize = !imgFilters.minimize"
-          >
-            Уменьшить
-          </button>
-          <button
-            type="button"
-            :class="imgFilters.sepia ? 'active' : ''"
-            @click="imgFilters.sepia = !imgFilters.sepia"
-          >
-            Фильтр
-          </button>
-          <button
-            type="button"
-            :class="imgFilters.border ? 'active' : ''"
-            @click="imgFilters.border = !imgFilters.border"
-          >
-            Рамка
-          </button>
-        </div>
-        <div class="sizes">
-          {{ imgSizes.currentWidth }}
-          <label for="width"
-            ><input
-              type="range"
-              name="width"
-              id="width"
-              :value="imgSizes.currentWidth"
-              @input="imgSizes.currentWidth = $event.target.value"
-              :min="imgSizes.minWidth"
-              :max="imgSizes.maxWidth"
-          /></label>
-
-          {{ imgSizes.currentHeight }}
-          <label for="height"
-            ><input
-              type="range"
-              name="height"
-              id="height"
-              :value="imgSizes.currentHeight"
-              @input="imgSizes.currentHeight = $event.target.value"
-              :min="imgSizes.minHeight"
-              :max="imgSizes.maxHeight"
-          /></label>
-        </div>
-      </div>
+    <img :src="imgUrl" alt="logo" width="360px" />
+    <div class="product__card--info">
+      <h2>{{ title }}</h2>
+      <div class="price">{{ price }}</div>
+      <div class="count">Доступно для доставки: {{ count }}</div>
+      <button type="button" @click="addToBusket">Добавить в корзину</button>
     </div>
   </div>
 </template>
@@ -77,56 +13,33 @@
 <script>
 export default {
   name: "userCard",
-  data() {
-    return {
-      isCatVisible: true,
-      imgFilters: {
-        sepia: false,
-        border: false,
-        minimize: false,
+  props: {
+    title: {
+      type: String,
+      validator(value) {
+        return value.length < 20;
       },
-      imgSizes: {
-        maxWidth: "500",
-        maxHeight: "500",
-        minWidth: "100",
-        minHeight: "100",
-        currentWidth: "500",
-        currentHeight: "500",
-      },
-    };
+    },
+    price: {
+      type: Number,
+      required: true,
+    },
+    imgUrl: {
+      type: String,
+      default:
+        "https://images.unsplash.com/photo-1499933374294-4584851497cc?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80",
+    },
+    count: Number,
   },
-  computed: {
-    imgStyles() {
-      return {
-        width: `${this.imgSizes.currentWidth}px`,
-        height: `${this.imgSizes.currentHeight}px`,
-      };
+  computed: {},
+  methods: {
+    addToBusket() {
+      this.$emit("addToBusket", this.price);
     },
   },
-  methods: {},
   watch: {},
 };
 </script>
 
 <style scoped>
-.logo {
-  width: 300px;
-  height: 300px;
-}
-
-.logo.sepia {
-  filter: sepia(100%);
-}
-
-.logo.border {
-  border: 2px solid red;
-}
-
-.logo.minimize {
-  transform: scale(0.5);
-}
-
-button.active {
-  background-color: #c2c2c2;
-}
 </style>
