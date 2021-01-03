@@ -23,6 +23,12 @@
           {{ `${fieldLabel}: ${fieldValue}` }}
         </p>
       </div>
+      <div>
+        <label for="additionalField">Дополнительное полe:</label>
+        <input type="text" id="additionalField" v-model="additionalField" />
+
+        <button type="button" @click="addNewField">Добавить</button>
+      </div>
     </div>
   </div>
 </template>
@@ -37,7 +43,13 @@ export default {
         secondName: "",
         lastName: "",
       },
+      additionalField: "",
     };
+  },
+  methods: {
+    addNewField() {
+      this.$set(this.formFields, this.additionalField, "");
+    },
   },
 };
 </script>
