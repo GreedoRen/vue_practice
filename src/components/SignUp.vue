@@ -2,7 +2,11 @@
   <form class="sign-up" @submit.prevent="checkForm">
     <div class="form-group">
       <label for="login">Логин:</label>
-      <input id="login" class="form-control" v-model.trim="form.login" />
+      <input
+        id="login"
+        class="form-control"
+        v-model.trim="$v.form.login.$model"
+      />
     </div>
     <div class="form-group">
       <label for="login">Почта:</label>
@@ -158,7 +162,16 @@ export default {
       ],
     };
   },
-  validations: {},
+  validations: {
+    form: {
+      login: {
+        simpleValidation(value) {
+          console.log(value);
+          return value.length > 5;
+        },
+      },
+    },
+  },
 };
 </script>
 
