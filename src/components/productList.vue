@@ -1,11 +1,7 @@
 <template>
   <div class="product__list">
     <h1>Столы</h1>
-    <input
-      type="text"
-      :value="searchText"
-      @input="searchText = $event.target.value"
-    />
+    <MyInput />
     <ul>
       <li v-for="(product, index) in products" :key="index">
         <userCard
@@ -22,10 +18,11 @@
 
 <script>
 import userCard from "./userCard";
+import MyInput from "./MyInput";
 
 export default {
   name: "ProductList",
-  components: { userCard },
+  components: { userCard, MyInput },
   data() {
     return {
       searchText: "",
