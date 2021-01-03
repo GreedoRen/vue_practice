@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <UserForm />
+    <SignUp />
   </div>
 </template>
 
 <script>
-import UserForm from "./components/userForm";
+import SignUp from "./components/SignUp";
 
 export default {
   name: "App",
   components: {
-    UserForm,
+    SignUp,
   },
 };
 </script>
