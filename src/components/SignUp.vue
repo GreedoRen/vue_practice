@@ -52,9 +52,22 @@
         class="form-check-input"
         id="notification"
         v-model="agreeWithSendToMail"
+        value="1"
       />
       <label class="form-check-label" for="notification"
-        >Уведомлять меня о новых курсах</label
+        >Уведомлять меня о новых курсах 1</label
+      >
+    </div>
+    <div class="form-group form-check">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="notification"
+        v-model="agreeWithSendToMail"
+        value="2"
+      />
+      <label class="form-check-label" for="notification"
+        >Уведомлять меня о новых курсах 2</label
       >
     </div>
     <!-- <div class="flex">
@@ -128,7 +141,7 @@ export default {
         },
       ],
       favoriteTheme: ["Technology"],
-      agreeWithSendToMail: false,
+      agreeWithSendToMail: [],
     };
   },
 };
