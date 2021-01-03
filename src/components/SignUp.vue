@@ -2,7 +2,7 @@
   <form class="sign-up" @submit.prevent="checkForm">
     <div class="form-group">
       <label for="login">Логин:</label>
-      <input id="login" class="form-control" v-model.trim="login" />
+      <input id="login" class="form-control" v-model.trim="form.login" />
     </div>
     <div class="form-group">
       <label for="login">Почта:</label>
@@ -10,7 +10,7 @@
         id="email"
         type="email"
         class="form-control"
-        v-model.trim="email"
+        v-model.trim="form.email"
       />
     </div>
     <div class="form-group">
@@ -19,12 +19,12 @@
         id="password"
         type="password"
         class="form-control"
-        v-model.trim="password"
+        v-model.trim="form.password"
       />
     </div>
     <div class="form-group">
       <label for="country">Страна проживания:</label>
-      <select id="country" class="form-control" v-model="country">
+      <select id="country" class="form-control" v-model="form.country">
         <option
           v-for="(country, index) in countries"
           :key="index"
@@ -36,7 +36,12 @@
     </div>
     <div class="form-group">
       <label for="themes">Любимые темы:</label>
-      <select id="themes" class="form-control" v-model="favoriteTheme" multiple>
+      <select
+        id="themes"
+        class="form-control"
+        v-model="form.favoriteTheme"
+        multiple
+      >
         <option
           v-for="(theme, index) in themes"
           :key="index"
@@ -51,7 +56,7 @@
         type="checkbox"
         class="form-check-input"
         id="notification1"
-        v-model="agreeWithSendToMail"
+        v-model="form.agreeWithSendToMail"
         value="1"
       />
       <label class="form-check-label" for="notification1"
@@ -63,7 +68,7 @@
         type="checkbox"
         class="form-check-input"
         id="notification2"
-        v-model="agreeWithSendToMail"
+        v-model="form.agreeWithSendToMail"
         value="2"
       />
       <label class="form-check-label" for="notification2"
@@ -78,7 +83,7 @@
           value="male"
           name="exampleRadios"
           id="male"
-          v-model="gender"
+          v-model="form.gender"
         />
         <label class="form-check-label" for="male"> Мужчина </label>
       </div>
@@ -89,7 +94,7 @@
           value="female"
           name="exampleRadios"
           id="female"
-          v-model="gender"
+          v-model="form.gender"
         />
         <label class="form-check-label" for="female"> Женщина </label>
       </div>
@@ -99,13 +104,21 @@
 </template>
 
 <script>
+import { validationMixin } from "vuelidate";
+
 export default {
+  mixins: [validationMixin],
   data() {
     return {
-      login: "",
-      email: "",
-      password: "",
-      gender: "",
+      form: {
+        login: "",
+        email: "",
+        password: "",
+        gender: "",
+        country: "Russia",
+        favoriteTheme: ["Technology"],
+        agreeWithSendToMail: [],
+      },
       countries: [
         {
           label: "Россия",
@@ -124,7 +137,7 @@ export default {
           value: "France",
         },
       ],
-      country: "Russia",
+
       themes: [
         {
           label: "Технологии",
@@ -143,10 +156,9 @@ export default {
           value: "Politisc",
         },
       ],
-      favoriteTheme: ["Technology"],
-      agreeWithSendToMail: [],
     };
   },
+  validations: {},
 };
 </script>
 
