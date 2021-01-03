@@ -1,30 +1,20 @@
 <template>
   <div class="root">
-    <input type="text" @input="text = $event.target.value" />
-    <ul>
-      <li v-for="(name, index) in searchNames" :key="index">
-        {{ name }}
-      </li>
-    </ul>
+    <img :src="imgUrl" alt="logo" width="360px" />
+    <div class="product__card--info">
+      <h2>{{ title }}</h2>
+      <div class="price">{{ price }}</div>
+      <div class="count">Доступно для доставки: {{ count }}</div>
+      <button type="button">Добавить в корзину</button>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   name: "userCard",
-  data() {
-    return {
-      text: "",
-      users: ["Jack", "Jhon", "Mike"],
-    };
-  },
-  computed: {
-    searchNames() {
-      return this.users.filter((name) =>
-        name.toLowerCase().includes(this.text.toLowerCase())
-      );
-    },
-  },
+  props: ["title", "price", "imgUrl", "count"],
+  computed: {},
   methods: {},
   watch: {},
 };
