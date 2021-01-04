@@ -34,8 +34,6 @@
 </template>
 
 <script>
-import ScrollHandler from "../mixins/scrollHandler";
-
 export default {
   props: {
     title: {
@@ -43,7 +41,6 @@ export default {
       default: "",
     },
   },
-  mixins: [ScrollHandler],
   data() {
     return {
       isRuleReaded: false,
