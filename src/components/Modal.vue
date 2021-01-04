@@ -10,7 +10,7 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body" ref="modalBody" @scroll="onBodyScroll">
+        <div class="modal-body" @scroll="onScroll">
           <slot></slot>
         </div>
         <div class="modal-footer">
@@ -34,6 +34,8 @@
 </template>
 
 <script>
+import ScrollHandler from "../mixins/scrollHandler";
+
 export default {
   props: {
     title: {
@@ -41,6 +43,7 @@ export default {
       default: "",
     },
   },
+  mixins: [ScrollHandler],
   data() {
     return {
       isRuleReaded: false,
@@ -53,15 +56,8 @@ export default {
     closeModal() {
       this.$emit("close");
     },
-    onBodyScroll() {
-      const modalBody = this.$refs.modalBody;
-
-      if (
-        modalBody.clientHeight + modalBody.scrollTop >=
-        modalBody.scrollHeight
-      ) {
-        this.isRuleReaded = true;
-      }
+    onScrollEnd() {
+      this.isRuleReaded = true;
     },
   },
 };
