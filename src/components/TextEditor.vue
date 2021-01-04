@@ -1,7 +1,9 @@
 <template>
   <div class="text-editor">
     <textarea v-model="text"></textarea>
-    <div class="output-text">{{ text }}</div>
+    <div class="output-text" :inner-html.prop="text | emoji | upperCase">
+      {{ text }}
+    </div>
   </div>
 </template>
 
@@ -12,10 +14,18 @@ export default {
       text: "",
     };
   },
+  filters: {
+    upperCase(value) {
+      return value.toUpperCase();
+    },
+    emoji(value) {
+      return value.replace(":)", "😄");
+    },
+  },
 };
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 textarea {
   width: 500px;
   height: 200px;

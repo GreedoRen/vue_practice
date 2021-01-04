@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <UserPage />
+    <TextEditor />
   </div>
 </template>
 
 <script>
-import UserPage from "./components/UserPage";
+import TextEditor from "./components/TextEditor";
 
 export default {
   name: "App",
   components: {
-    UserPage,
+    TextEditor,
   },
 };
 </script>
