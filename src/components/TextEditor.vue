@@ -1,7 +1,7 @@
 <template>
   <div class="text-editor">
     <textarea v-model="text"></textarea>
-    <div class="output-text" :inner-html.prop="text | emoji | upperCase">
+    <div class="output-text" :inner-html.prop="text | marked">
       {{ text }}
     </div>
   </div>
