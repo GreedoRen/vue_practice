@@ -49,8 +49,8 @@ export default {
       isRuleReaded: false,
     };
   },
-  beforeCreate() {
-    console.log("Before create");
+  created() {
+    this.$log();
   },
   methods: {
     closeModal() {

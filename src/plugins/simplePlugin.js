@@ -1,6 +1,6 @@
 export default {
     install(Vue) {
-        Vue.prototype.slog = function(methodOptions) {
+        Vue.prototype.$log = function() {
             console.log('simplePlugin')
         }
     }
