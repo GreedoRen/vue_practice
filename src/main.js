@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import App from './App.vue'
-import VueRouter from 'vue-router'
-import router from './router/index'
 
-import marked from 'marked'
+import SearchMixin from './components/mixins/search'
+
+Vue.mixin(SearchMixin)
 
 new Vue({
   render: h => h(App),

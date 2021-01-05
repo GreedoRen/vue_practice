@@ -1,11 +1,15 @@
 <template>
-  <div id="app"></div>
+  <div id="app">
+    <MainPage />
+  </div>
 </template>
 
 <script>
+import MainPage from "./components/pages/mainPage";
+
 export default {
   name: "App",
-  components: {},
+  components: { MainPage },
 };
 </script>
 
