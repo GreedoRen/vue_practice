@@ -1,17 +1,11 @@
 <template>
-  <div id="app">
-    <TextEditor />
-  </div>
+  <div id="app"></div>
 </template>
 
 <script>
-import TextEditor from "./components/TextEditor";
-
 export default {
   name: "App",
-  components: {
-    TextEditor,
-  },
+  components: {},
 };
 </script>
 
